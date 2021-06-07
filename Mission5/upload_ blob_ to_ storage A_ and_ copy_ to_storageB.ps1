@@ -6,7 +6,7 @@ git clone https://github.com/JanShalom/JanShalom.git
 
 #list all storage account names
 $RG = read-Host -Prompt 'Please Enter the Resource Group Name '
-Get-AzStorageaccount -r $RG |select StorageAccountName
+(Get-AzStorageaccount -ResourceGroupName $RG).StorageAccountName 
 
 # set the storage account the blobs will be uploaded to
 $StorageA= read-Host -Prompt 'Please Enter the Storage A name'
