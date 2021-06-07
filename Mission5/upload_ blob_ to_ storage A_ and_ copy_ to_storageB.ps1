@@ -1,12 +1,16 @@
 Connect-AzAccount
 $tid = (Get-AzTenant).Id
 azcopy login --tenant-id $tid  
-git clone https://github.com/JanShalom/JanShalom.git
-.\create-100-blobs.ps1
+#git clone https://github.com/JanShalom/JanShalom.git
+#.\create-100-blobs.ps1
+
+## we must grant Storage Blob Data Contributor rule and resign-in
 
 #list all storage account names
-$RG = read-Host -Prompt 'Please Enter the Resource Group Name '
+$RG = read-Host -Prompt 'Please Enter the Resource Group Name'
+
 (Get-AzStorageaccount -ResourceGroupName $RG).StorageAccountName 
+
 
 # set the storage account the blobs will be uploaded to
 $StorageA= read-Host -Prompt 'Please Enter the Storage A name'
@@ -27,7 +31,7 @@ New-AzStorageContainer -Name "ms-challenge" -Permission Blob -Context $ctx
 # make ms-challenge container
 
 
-azcopy make https://$storageA.blob.core.windows.net/ms-challenge
+#azcopy make https://$storageA.blob.core.windows.net/ms-challenge
 
 
 # copy Blobs from local PC to storageA
