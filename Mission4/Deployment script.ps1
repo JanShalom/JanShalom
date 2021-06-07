@@ -1,7 +1,7 @@
 $RG = Read-Host -Prompt 'Please Enter the Resource Group Name'
 $Location = "West Europe"
-$VMTemplateFile = Read-Host -Prompt 'Please provide the path to the template file'
-$StorageTemplateFile = Read-Host -Prompt 'Please provide the path to the template file'
+$StorageTemplateFile = Read-Host -Prompt 'Please provide the path to the Storages template file'
+$VMTemplateFile = Read-Host -Prompt 'Please provide the path to the VM template file'
 #we can upload the file trought the pordal as well as deply the templets trough the portal
 
 New-AzResourceGroup `
