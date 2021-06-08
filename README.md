@@ -1,3 +1,15 @@
+**MS challenge**
+
+My first Project in Azure, will deploy 2 Storage accounts and 1 VM written in a json file to azure, 
+then it will create and upload blobs to one of the storege, from there it will be copied to the second storage.
+
+ 
+
+
+
+
+
+
 - 👋 Hi, I’m @JanShalom
 - 👀 I feel in Love with  Azure
 - 🌱 I’m currently learning Azure Architect
