@@ -11,7 +11,7 @@ then it will create and upload blobs to one of the storege, from there it will b
 
 
 - 👋 Hi, I’m @JanShalom
-- 👀 I feel in Love with  Azure
+- 👀 Dreaming Azure
 - 🌱 I’m currently learning Azure Architect
 - 📫 How to reach me ...janshalommail@gmail.com
 
