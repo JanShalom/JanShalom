@@ -1,13 +1,12 @@
-Connect-AzAccount
-$tid = (Get-AzTenant).Id
-azcopy login --tenant-id $tid  
+#Connect-AzAccount
+#$tid = (Get-AzTenant).Id
+#azcopy login --tenant-id $tid  
 #git clone https://github.com/JanShalom/JanShalom.git
-#.\create-100-blobs.ps1
 
-## we must grant Storage Blob Data Contributor rule and resign-in
+
 
 #list all storage account names
-$RG = read-Host -Prompt 'Please Enter the Resource Group Name'
+#$RG = read-Host -Prompt 'Please Enter the Resource Group Name'
 
 (Get-AzStorageaccount -ResourceGroupName $RG).StorageAccountName 
 
@@ -15,6 +14,14 @@ $RG = read-Host -Prompt 'Please Enter the Resource Group Name'
 # set the storage account the blobs will be uploaded to
 $StorageA= read-Host -Prompt 'Please Enter the Storage A name'
 $StorageB= read-Host -Prompt 'Please Enter the Storage B name'
+
+#grant Storage Blob Data Contributor role 
+$subid = (Get-AzSubscription -SubscriptionName jan-azure1)  
+$udn = read-Host -Prompt 'Please Enter the User Login Dispaly name'
+$upnid = (Get-AzADUser -DisplayName "$udn").id     
+  
+New-AzRoleAssignment -ObjectId $upnid -RoleDefinitionName "Storage Blob Data Contributor" -Scope "/subscriptions/$subid/resourceGroups/$RG/providers/Microsoft.Storage/storageAccounts/$StorageA"
+
 
 # get StorageA account key
 $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $RG -Name $StorageA).Value[0]
