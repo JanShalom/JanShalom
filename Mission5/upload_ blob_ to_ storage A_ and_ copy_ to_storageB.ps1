@@ -21,6 +21,7 @@ $udn = read-Host -Prompt 'Please Enter the User Login Dispaly name'
 $upnid = (Get-AzADUser -DisplayName "$udn").id     
   
 New-AzRoleAssignment -ObjectId $upnid -RoleDefinitionName "Storage Blob Data Contributor" -Scope "/subscriptions/$subid/resourceGroups/$RG/providers/Microsoft.Storage/storageAccounts/$StorageA"
+New-AzRoleAssignment -ObjectId $upnid -RoleDefinitionName "Storage Blob Data Contributor" -Scope "/subscriptions/$subid/resourceGroups/$RG/providers/Microsoft.Storage/storageAccounts/$StorageB"
 
 
 # get StorageA account key
