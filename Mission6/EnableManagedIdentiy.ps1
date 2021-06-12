@@ -1,7 +1,9 @@
 #$vm = Get-AzVM -ResourceGroupName $RG -Name Jan-VM1
 #Update-AzVM -ResourceGroupName $RG -VM $vm -IdentityType SystemAssigned #works
 
-$VMName = (Get-AzVm).name
+$VM = Read-Host -Prompt 'Please provide the VM name'
+$VMName = Get-AzVM -ResourceGroupName $RG -Name $VM
+
 Update-AzVM -ResourceGroupName $RG -VM $VMName -IdentityType SystemAssigned
 
 $spID = (Get-AzVM -ResourceGroupName $RG -Name $VMName).identity.principalid
