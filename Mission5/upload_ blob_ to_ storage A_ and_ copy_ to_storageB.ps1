@@ -23,6 +23,7 @@ $upnid = (Get-AzADUser -DisplayName "$udn").id
 New-AzRoleAssignment -ObjectId $upnid -RoleDefinitionName "Storage Blob Data Contributor" -Scope "/subscriptions/$subid/resourceGroups/$RG/providers/Microsoft.Storage/storageAccounts/$StorageA"
 New-AzRoleAssignment -ObjectId $upnid -RoleDefinitionName "Storage Blob Data Contributor" -Scope "/subscriptions/$subid/resourceGroups/$RG/providers/Microsoft.Storage/storageAccounts/$StorageB"
 
+Start-Sleep -Milliseconds 30000
 
 # get StorageA account key
 $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $RG -Name $StorageA).Value[0]
