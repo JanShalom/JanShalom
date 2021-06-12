@@ -1,3 +1,4 @@
+# save script in Cloudshell
 Invoke-WebRequest -Uri "https://aka.ms/downloadazcopy-v10-windows" -OutFile AzCopy.zip -UseBasicParsing
  
 curl.exe -L -o AzCopy.zip https://aka.ms/downloadazcopy-v10-windows
