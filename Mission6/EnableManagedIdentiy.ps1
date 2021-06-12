@@ -6,8 +6,7 @@ $VMName = Get-AzVM -ResourceGroupName $RG -Name $VM
 
 Update-AzVM -ResourceGroupName $RG -VM $VMName -IdentityType SystemAssigned
 
-$spID = (Get-AzVM -ResourceGroupName $RG -Name $VMName).identity.principalid
-# New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Storage Blob Data Contributor" -Scope "/subscriptions/563641ea-4294-4002-aedc-b0a97aa107fe/resourceGroups/$RG/providers/Microsoft.Storage/storageAccounts/$StorageA"
+$miID = (Get-AzVM -ResourceGroupName $RG -Name $VM).identity.principalid # managed identities ID
+$subID =  (Get-AzSubscription -SubscriptionName jan-azure1).id # Subscription ID
 
-New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Storage Blob Data Contributor" -Scope "/subscriptions/$subid/resourceGroups/$RG/providers/Microsoft.Storage/storageAccounts/$StorageA"
-
+New-AzRoleAssignment -ObjectId $miID -RoleDefinitionName "Storage Blob Data Contributor" -Scope "/subscriptions/$subID/resourceGroups/$RG/providers/Microsoft.Storage/storageAccounts/$StorageA"
